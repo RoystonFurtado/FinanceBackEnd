@@ -49,7 +49,7 @@ public class User {
 	@JoinColumn(name = "card_type")
 	private EMICard emiCard;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "card_no")
 	private CardInfo cardInfo;
 	

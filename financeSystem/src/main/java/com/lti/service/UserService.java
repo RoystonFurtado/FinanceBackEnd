@@ -19,7 +19,7 @@ public class UserService implements Service{
 	@Override
 	public Object fetchByPk(Object o) {
 		// TODO Auto-generated method stub
-		return null;
+		return (User)dao.fetchById(User.class,o);
 	}
 	
 	

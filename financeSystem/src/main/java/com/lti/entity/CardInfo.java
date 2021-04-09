@@ -18,7 +18,7 @@ public class CardInfo {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "cardNoSeq")
 	@SequenceGenerator(sequenceName = "card_no_seq",allocationSize = 1,name = "cardNoSeq")
 	@Column(name = "card_no")
-	private int cardNo;
+	private long cardNo;
 	
 	@Column(name="card_balance")
 	private double cardBalance;
@@ -32,11 +32,11 @@ public class CardInfo {
 	@OneToOne(mappedBy="cardInfo")
 	private User user;
 
-	public int getCardNo() {
+	public long getCardNo() {
 		return cardNo;
 	}
 
-	public void setCardNo(int cardNo) {
+	public void setCardNo(long cardNo) {
 		this.cardNo = cardNo;
 	}
 

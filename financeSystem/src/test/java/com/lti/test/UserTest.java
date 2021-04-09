@@ -29,8 +29,19 @@ public class UserTest {
 		u.setEmiCard(emiCard);
 		//Document Id is inserted through a before insert trigger and sequence on the database
 		us.add(u);
-		System.out.println("heyy joker");
 		
+	}
+	
+	@Test
+	public void activateUser() {
+		User u=(User)us.fetchByPk(391);
+		CardInfo c=new CardInfo();
+		c.setCardBalance(u.getEmiCard().getCardLimit());
+		c.setCardCreditUsed(0);
+		//3 Years(Validity Period fetched from emi_card) from current date is expiry date
+		c.setCardExpiryDate(LocalDate.now().plusYears(u.getEmiCard().getValidityPeriod()));
+		u.setCardInfo(c);
+		us.add(u);
 	}
 	
 }
