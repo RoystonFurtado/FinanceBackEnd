@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import org.junit.Test;
 
+import com.lti.entity.CardInfo;
 import com.lti.entity.EMICard;
 import com.lti.entity.User;
 import com.lti.service.EmiCardService;
@@ -29,4 +30,5 @@ public class UserTest {
 		//Document Id is inserted through a before insert trigger and sequence on the database
 		us.add(u);
 	}
+	
 }
