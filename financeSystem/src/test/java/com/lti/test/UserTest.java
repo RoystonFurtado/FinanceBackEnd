@@ -27,12 +27,8 @@ public class UserTest {
 		EMICard emiCard=(EMICard)ecs.fetchByPk("Gold");
 		u.setProfileStatus("Inactive");//Default Value
 		u.setEmiCard(emiCard);
-//		//Document Id is inserted through a before insert trigger and sequence on the database
-		us.add(u);
-		System.out.println("Hello World...Welcome");
-		System.out.println("Try to push this code to repo!!!");
-
-		
+		//Document Id is inserted through a before insert trigger and sequence on the database
+		us.add(u);	
 	}
 	
 	@Test
@@ -46,6 +42,4 @@ public class UserTest {
 		u.setCardInfo(c);
 		us.add(u);
 	}
-	
-
 }

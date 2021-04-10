@@ -9,13 +9,11 @@ public class EmiCardService implements Service {
 
 	@Override
 	public void add(Object o) {
-		// TODO Auto-generated method stub
-		
+		dao.save(o);
 	}
 
 	@Override
 	public Object fetchByPk(Object o) {
-		// TODO Auto-generated method stub
 		return (EMICard)dao.fetchById(EMICard.class,o);
 	}
 	

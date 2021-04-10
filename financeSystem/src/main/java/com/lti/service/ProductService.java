@@ -1,24 +1,21 @@
 package com.lti.service;
 
-import java.util.List;
-
 import com.lti.dao.GenericDao;
-import com.lti.entity.User;
+import com.lti.entity.Product;
 
-public class UserService implements Service{
+public class ProductService implements Service {
 
 	GenericDao dao=new GenericDao();
-
+	
 	@Override
 	public void add(Object o) {
-		dao.save(o);
+		dao.save(o);	
 	}
 
 	@Override
 	public Object fetchByPk(Object o) {
-		return (User)dao.fetchById(User.class,o);
+		return (Product)dao.fetchById(Product.class, o);
 	}
 	
-	
-	
+
 }
