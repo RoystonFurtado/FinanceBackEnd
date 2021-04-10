@@ -29,7 +29,7 @@ public class UserTest {
 		u.setEmiCard(emiCard);
 //		//Document Id is inserted through a before insert trigger and sequence on the database
 		us.add(u);
-		System.out.println("Hello World");
+		System.out.println("Hello World...Welcome");
 
 		
 	}

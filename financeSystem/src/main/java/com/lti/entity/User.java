@@ -3,6 +3,7 @@ package com.lti.entity;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -48,7 +49,7 @@ public class User {
 	@JoinColumn(name = "card_type")
 	private EMICard emiCard;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "card_no")
 	private CardInfo cardInfo;
 	
