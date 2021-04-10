@@ -87,7 +87,7 @@ public class Order {
 	public void setAmountPaid(double amountPaid) {
 		this.amountPaid = amountPaid;
 	}
-	
+
 	public int getTenurePeriod() {
 		return tenurePeriod;
 	}

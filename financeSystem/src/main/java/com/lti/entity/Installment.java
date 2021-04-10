@@ -1,6 +1,8 @@
 package com.lti.entity;
 
 import java.time.LocalDate;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +32,7 @@ import javax.persistence.OneToOne;
 	 @JoinColumn(name = "order_id")
 	 private Order order;
 	 
-	 @OneToOne
+	 @OneToOne(cascade = CascadeType.MERGE)
 	 @JoinColumn(name = "payment_id")
 	 private Payment payment;
 
