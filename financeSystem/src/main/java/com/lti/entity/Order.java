@@ -36,7 +36,7 @@ public class Order {
 	private double amountPaid;
 	
 	@Column(name = "tenure_period")
-	private LocalDate tenurePeriod;
+	private int tenurePeriod;
 	
 	@Column(name = "purchase_date")
 	private LocalDateTime purchaseDate;
@@ -87,12 +87,12 @@ public class Order {
 	public void setAmountPaid(double amountPaid) {
 		this.amountPaid = amountPaid;
 	}
-
-	public LocalDate getTenurePeriod() {
+	
+	public int getTenurePeriod() {
 		return tenurePeriod;
 	}
 
-	public void setTenurePeriod(LocalDate tenurePeriod) {
+	public void setTenurePeriod(int tenurePeriod) {
 		this.tenurePeriod = tenurePeriod;
 	}
 
