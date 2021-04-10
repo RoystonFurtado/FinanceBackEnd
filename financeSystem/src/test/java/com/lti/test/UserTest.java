@@ -30,6 +30,7 @@ public class UserTest {
 //		//Document Id is inserted through a before insert trigger and sequence on the database
 		us.add(u);
 		System.out.println("Hello World...Welcome");
+		System.out.println("Try to push this code to repo!!!");
 
 		
 	}
