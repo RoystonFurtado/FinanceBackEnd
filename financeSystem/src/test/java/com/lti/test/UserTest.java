@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import org.junit.Test;
 
+import com.lti.entity.CardInfo;
 import com.lti.entity.EMICard;
 import com.lti.entity.User;
 import com.lti.service.EmiCardService;
@@ -17,21 +18,33 @@ public class UserTest {
 	@Test
 	public void addUser() {
 		User u=new User();
-		u.setUserName("Bruno Fernandes");
-		u.setEmailId("bruno@hotmail.com");
+		u.setUserName("Sonali");
+		u.setEmailId("sonali98@hotmail.com");
 		u.setAddress("Manchester");
 		u.setDob(LocalDate.of(1990,6,2));
 		u.setPassword("bruno123");
-		u.setMobileNo(9232033589L);
+		u.setMobileNo(9237893589L);
 		EMICard emiCard=(EMICard)ecs.fetchByPk("Gold");
 		u.setProfileStatus("Inactive");//Default Value
 		u.setEmiCard(emiCard);
 //		//Document Id is inserted through a before insert trigger and sequence on the database
 		us.add(u);
-//		System.out.println("heyy joker");
-//		System.out.println(emiCard.getCardType());
-		
+		System.out.println("Hello World");
+
 		
 	}
 	
+	@Test
+	public void activateUser() {
+		User u=(User)us.fetchByPk(391);
+		CardInfo c=new CardInfo();
+		c.setCardBalance(u.getEmiCard().getCardLimit());
+		c.setCardCreditUsed(0);
+		//3 Years(Validity Period fetched from emi_card) from current date is expiry date
+		c.setCardExpiryDate(LocalDate.now().plusYears(u.getEmiCard().getValidityPeriod()));
+		u.setCardInfo(c);
+		us.add(u);
+	}
+	
+
 }
