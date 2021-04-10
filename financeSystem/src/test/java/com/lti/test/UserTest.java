@@ -22,13 +22,16 @@ public class UserTest {
 		u.setAddress("Manchester");
 		u.setDob(LocalDate.of(1990,6,2));
 		u.setPassword("bruno123");
-		u.setMobileNo(9234633589L);
-		EMICard emiCard=(EMICard)ecs.fetchByPk("Titanium");
+		u.setMobileNo(9232033589L);
+		EMICard emiCard=(EMICard)ecs.fetchByPk("Gold");
 		u.setProfileStatus("Inactive");//Default Value
 		u.setEmiCard(emiCard);
-		//Document Id is inserted through a before insert trigger and sequence on the database
+//		//Document Id is inserted through a before insert trigger and sequence on the database
 		us.add(u);
-		System.out.println("heyy joker");
+//		System.out.println("heyy joker");
+//		System.out.println(emiCard.getCardType());
+		
 		
 	}
+	
 }
