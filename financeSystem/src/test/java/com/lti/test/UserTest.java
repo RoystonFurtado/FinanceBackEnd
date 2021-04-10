@@ -34,7 +34,7 @@ public class UserTest {
 	
 	@Test
 	public void activateUser() {
-		User u=(User)us.fetchByPk(391);
+		User u=(User)us.fetchByPk(10000);
 		CardInfo c=new CardInfo();
 		c.setCardBalance(u.getEmiCard().getCardLimit());
 		c.setCardCreditUsed(0);
