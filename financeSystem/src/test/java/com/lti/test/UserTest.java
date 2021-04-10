@@ -18,17 +18,20 @@ public class UserTest {
 	@Test
 	public void addUser() {
 		User u=new User();
-		u.setUserName("Bruno Fernandes");
-		u.setEmailId("bruno@hotmail.com");
+		u.setUserName("Sonali");
+		u.setEmailId("sonali98@hotmail.com");
 		u.setAddress("Manchester");
 		u.setDob(LocalDate.of(1990,6,2));
 		u.setPassword("bruno123");
-		u.setMobileNo(9234633589L);
-		EMICard emiCard=(EMICard)ecs.fetchByPk("Titanium");
+		u.setMobileNo(9237893589L);
+		EMICard emiCard=(EMICard)ecs.fetchByPk("Gold");
 		u.setProfileStatus("Inactive");//Default Value
 		u.setEmiCard(emiCard);
-		//Document Id is inserted through a before insert trigger and sequence on the database
+//		//Document Id is inserted through a before insert trigger and sequence on the database
 		us.add(u);
+		System.out.println("Hello World...Welcome");
+		System.out.println("Try to push this code to repo!!!");
+
 		
 	}
 	
@@ -44,4 +47,5 @@ public class UserTest {
 		us.add(u);
 	}
 	
+
 }
