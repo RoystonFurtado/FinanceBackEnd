@@ -13,7 +13,6 @@ import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Payment {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "paymentIdSeq")
 	@SequenceGenerator(sequenceName = "payment_id_seq",allocationSize = 1,name = "paymentIdSeq")
@@ -32,6 +31,7 @@ public class Payment {
 	@OneToOne(mappedBy="payment")
 	private Installment installment;
 
+	
 	public int getPaymentId() {
 		return paymentId;
 	}

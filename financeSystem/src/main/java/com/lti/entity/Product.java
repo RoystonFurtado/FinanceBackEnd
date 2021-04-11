@@ -21,12 +21,16 @@ public class Product {
 	@Column(name = "product_description")
 	private String productDescription;
 	
+	@Column(name = "product_category")
+	private String productCategory;
+	
 	@Column(name = "product_price")
 	private double productPrice;
 	
 	@OneToMany(mappedBy="product")
 	private List<Order> orders;
 
+	
 	public int getProductId() {
 		return productId;
 	}
@@ -66,4 +70,13 @@ public class Product {
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
 	}
+
+	public String getProductCategory() {
+		return productCategory;
+	}
+
+	public void setProductCategory(String productCategory) {
+		this.productCategory = productCategory;
+	}
+	
 }

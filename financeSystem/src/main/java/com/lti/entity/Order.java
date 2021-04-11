@@ -56,6 +56,7 @@ public class Order {
 	@OneToMany(mappedBy="order")
 	private List<Installment> installments;
 
+	
 	public int getOrderId() {
 		return orderId;
 	}

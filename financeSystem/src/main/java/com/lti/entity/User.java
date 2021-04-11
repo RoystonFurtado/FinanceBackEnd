@@ -19,7 +19,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name="user_data")
 public class User {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "userIdSeq")
 	@SequenceGenerator(sequenceName = "user_id_seq",allocationSize = 1,name = "userIdSeq")
@@ -56,6 +55,7 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<Order> orders;
 
+	
 	public int getUserId() {
 		return userId;
 	}

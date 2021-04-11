@@ -29,6 +29,7 @@ public class EMICard {
 	@OneToMany(mappedBy="emiCard")
 	private List<User> users;
 
+	
 	public String getCardType() {
 		return cardType;
 	}
