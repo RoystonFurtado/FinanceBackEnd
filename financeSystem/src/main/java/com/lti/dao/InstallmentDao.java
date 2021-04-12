@@ -19,6 +19,7 @@ public class InstallmentDao extends GenericDao{
 			Query query=em.createQuery(jpql);
 			query.setParameter("oid",id);
 			Installment result=(Installment)query.getSingleResult();
+			System.out.println(result);
 			return result;
 			
 		}catch(Exception ex) {

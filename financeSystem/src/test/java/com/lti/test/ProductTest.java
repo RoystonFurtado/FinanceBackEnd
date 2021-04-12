@@ -12,8 +12,8 @@ public class ProductTest {
 	@Test
 	public void addProduct() {
 		Product p=new Product();
-		p.setProductName("Realme 6");
-		p.setProductPrice(10000);
+		p.setProductName("Realme 6 pro");
+		p.setProductPrice(19000);
 		p.setProductDescription("Oppo is the parent company of RealMe");
 		ps.add(p);
 		
