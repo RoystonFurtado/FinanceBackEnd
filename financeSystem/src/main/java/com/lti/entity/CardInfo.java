@@ -32,6 +32,7 @@ public class CardInfo {
 	@OneToOne(mappedBy="cardInfo")
 	private User user;
 
+	
 	public long getCardNo() {
 		return cardNo;
 	}

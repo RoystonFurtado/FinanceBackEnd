@@ -13,7 +13,6 @@ import javax.persistence.OneToOne;
 
  @Entity
  public class Installment {
-	 
 	 @Id
 	 @GeneratedValue
 	 @Column(name = "installment_id")
@@ -36,6 +35,7 @@ import javax.persistence.OneToOne;
 	 @JoinColumn(name = "payment_id")
 	 private Payment payment;
 
+	 
 	public int getInstallmentId() {
 		return installmentId;
 	}

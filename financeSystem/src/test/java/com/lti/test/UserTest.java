@@ -12,19 +12,20 @@ import com.lti.service.Service;
 import com.lti.service.UserService;
 
 public class UserTest {
+	
 	Service us=new UserService();
 	Service ecs=new EmiCardService();
 	
 	@Test
 	public void addUser() {
 		User u=new User();
-		u.setUserName("Sonali");
-		u.setEmailId("sonali98@hotmail.com");
-		u.setAddress("Manchester");
-		u.setDob(LocalDate.of(1990,6,2));
-		u.setPassword("bruno123");
-		u.setMobileNo(9237893589L);
-		EMICard emiCard=(EMICard)ecs.fetchByPk("Gold");
+		u.setUserName("John Doe");
+		u.setEmailId("jd@gmail.com");
+		u.setAddress("New York");
+		u.setDob(LocalDate.of(1987,6,21));
+		u.setPassword("nopass123");
+		u.setMobileNo(9234567890L);
+		EMICard emiCard=(EMICard)ecs.fetchByPk("Titanium");
 		u.setProfileStatus("Inactive");//Default Value
 		u.setEmiCard(emiCard);
 		//Document Id is inserted through a before insert trigger and sequence on the database
@@ -32,13 +33,14 @@ public class UserTest {
 	}
 	
 	@Test
-	public void activateUser() {
-		User u=(User)us.fetchByPk(10000);
+	public void activateUser() {		
+		User u=(User)us.fetchByPk(10003);
 		CardInfo c=new CardInfo();
-		c.setCardBalance(u.getEmiCard().getCardLimit());
-		c.setCardCreditUsed(0);
+		c.setCardBalance(u.getEmiCard().getCardLimit()-u.getEmiCard().getJoiningFee());
+		c.setCardCreditUsed(u.getEmiCard().getJoiningFee());
 		//3 Years(Validity Period fetched from emi_card) from current date is expiry date
 		c.setCardExpiryDate(LocalDate.now().plusYears(u.getEmiCard().getValidityPeriod()));
+		u.setProfileStatus("Active");
 		u.setCardInfo(c);
 		us.add(u);
 	}
