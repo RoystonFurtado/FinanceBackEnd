@@ -5,6 +5,7 @@ import java.util.List;
 import org.junit.Test;
 
 import com.lti.entity.Product;
+import com.lti.entity.User;
 import com.lti.service.ProductService;
 import com.lti.service.Service;
 
@@ -15,8 +16,8 @@ public class ProductTest {
 	@Test
 	public void addProduct() {
 		Product p=new Product();
-		p.setProductName("Realme 6 pro");
-		p.setProductPrice(19000);
+		p.setProductName("Realme 6 pro plus");
+		p.setProductPrice(25000);
 		p.setProductDescription("Oppo is the parent company of RealMe");
 
 		p.setProductName("ASUS ROG Strix");
@@ -27,12 +28,9 @@ public class ProductTest {
 	}	
 	
 	@Test
-	public void fetchByProductPrice() {
-		ProductService ps1 = new ProductService();
-		List<Product> list = (List<Product>) ps1.fetchByProductPrice(19000);
-		for(Product l :list) {
-			System.out.println(l.getProductName());
-		}
+	public void fetchByProductId() {
+		Product p=(Product)ps.fetchByPk(222);
+		System.out.println(p.getProductId()+p.getProductName()+p.getProductPrice());
 		
 	}
 
