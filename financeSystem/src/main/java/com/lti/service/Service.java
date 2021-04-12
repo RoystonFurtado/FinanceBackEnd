@@ -1,5 +1,8 @@
 package com.lti.service;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public interface Service {
 	
 	public void add(Object o);

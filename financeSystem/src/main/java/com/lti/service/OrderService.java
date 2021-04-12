@@ -2,12 +2,17 @@ package com.lti.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.lti.dao.OrderDao;
 import com.lti.entity.Order;
 
+@Component
 public class OrderService implements Service {
 
-	OrderDao dao = new OrderDao();
+	@Autowired
+	OrderDao dao;
 	
 	@Override
 	public void add(Object o) {

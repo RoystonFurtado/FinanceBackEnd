@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.lti.entity.CardInfo;
 import com.lti.entity.Order;
@@ -19,7 +20,10 @@ public class OrderTest {
 	
 	Service us=new UserService();
 	Service ps=new ProductService();
-	OrderService os = new OrderService();
+	
+	@Autowired
+	OrderService os;
+	
 	Service cis=new CardInfoService();
 	
 	@Test

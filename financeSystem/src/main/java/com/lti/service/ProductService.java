@@ -1,11 +1,16 @@
 package com.lti.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.lti.dao.GenericDao;
 import com.lti.entity.Product;
-import com.lti.dao.ProductDao;
+
+@Component
 public class ProductService implements Service {
 
-	GenericDao dao=new GenericDao();
+	@Autowired
+	GenericDao dao;
 	
 	@Override
 	public void add(Object o) {

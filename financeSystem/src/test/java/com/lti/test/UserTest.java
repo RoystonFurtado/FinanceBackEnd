@@ -19,12 +19,12 @@ public class UserTest {
 	@Test
 	public void addUser() {
 		User u=new User();
-		u.setUserName("John Doe");
-		u.setEmailId("jd@gmail.com");
-		u.setAddress("New York");
+		u.setUserName("Vivek");
+		u.setEmailId("vivek@yahoo.com");
+		u.setAddress("Mumbai");
 		u.setDob(LocalDate.of(1987,6,21));
 		u.setPassword("nopass123");
-		u.setMobileNo(9234567890L);
+		u.setMobileNo(9234567123L);
 		EMICard emiCard=(EMICard)ecs.fetchByPk("Titanium");
 		u.setProfileStatus("Inactive");//Default Value
 		u.setEmiCard(emiCard);

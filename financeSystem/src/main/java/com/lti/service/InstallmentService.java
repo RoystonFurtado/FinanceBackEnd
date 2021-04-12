@@ -2,13 +2,18 @@ package com.lti.service;
 
 import java.time.LocalDate;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.lti.dao.InstallmentDao;
 import com.lti.entity.Installment;
 import com.lti.entity.Order;
 
+@Component
 public class InstallmentService implements Service {
 
-	InstallmentDao dao = new InstallmentDao();
+	@Autowired
+	InstallmentDao dao;
 	
 	@Override
 	public void add(Object o) {
