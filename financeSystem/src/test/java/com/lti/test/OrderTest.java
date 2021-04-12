@@ -1,6 +1,7 @@
 package com.lti.test;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -22,9 +23,9 @@ public class OrderTest {
 	Service cis=new CardInfoService();
 	
 	@Test
-	public void addOrder() {	
+	public void addOrder() {
 		Order order=new Order();
-		User user=(User)us.fetchByPk(10002);
+		User user=(User)us.fetchByPk(10003);
 		Product product=(Product)ps.fetchByPk(420);
 		order.setUser(user);
 		order.setProduct(product);
@@ -41,6 +42,42 @@ public class OrderTest {
 		c.setCardCreditUsed(c.getCardCreditUsed()+product.getProductPrice());
 		c.setCardBalance(c.getCardBalance()-product.getProductPrice());
 		cis.add(c);	
+	}
+	
+	@Test
+	public void fetchAllActiveOrders() {
+		List<Order> allActiveOrders=os.fetchAllActiveOrders();
+		for(Order order:allActiveOrders) {
+			System.out.println("------Order Id:"+order.getOrderId()+"------");
+			System.out.println("User Id:"+order.getUser().getUserId());
+			System.out.println("Product Id:"+order.getProduct().getProductId());
+			System.out.println("Amount Paid:"+order.getAmountPaid());
+			System.out.println("Tenure Period:"+order.getTenurePeriod());
+			System.out.println("Purchase Date and Time:"+order.getPurchaseDate());
+			System.out.println("Amount Balance:"+order.getEMIMonthsPaid());
+			System.out.println("EMI Months Paid:"+order.getEMIMonthsPaid());
+			System.out.println("Order Status:"+order.getOrderStatus());
+			System.out.println("Monthly EMI Amount:"+order.getMonthlyEMIAmount());
+			System.out.println();
+		}
+	}
+	
+	@Test
+	public void fetchOrdersByUser() {
+		List<Order> userOrders=os.fetchOrdersByUser(10003);
+		System.out.println("------"+userOrders.get(0).getUser().getUserName()+"'s Orders------\n");
+		for(Order order:userOrders) {
+			System.out.println("------Order Id:"+order.getOrderId()+"------");
+			System.out.println("Product Id:"+order.getProduct().getProductId());
+			System.out.println("Amount Paid:"+order.getAmountPaid());
+			System.out.println("Tenure Period:"+order.getTenurePeriod());
+			System.out.println("Purchase Date and Time:"+order.getPurchaseDate());
+			System.out.println("Amount Balance:"+order.getEMIMonthsPaid());
+			System.out.println("EMI Months Paid:"+order.getEMIMonthsPaid());
+			System.out.println("Order Status:"+order.getOrderStatus());
+			System.out.println("Monthly EMI Amount:"+order.getMonthlyEMIAmount());
+			System.out.println();
+		}
 	}
 
 }

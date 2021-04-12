@@ -1,12 +1,13 @@
 package com.lti.service;
 
-import com.lti.dao.GenericDao;
+import java.util.List;
+
+import com.lti.dao.OrderDao;
 import com.lti.entity.Order;
-import com.lti.entity.User;
 
 public class OrderService implements Service {
 
-	GenericDao dao = new GenericDao();
+	OrderDao dao = new OrderDao();
 	
 	@Override
 	public void add(Object o) {
@@ -22,6 +23,14 @@ public class OrderService implements Service {
 		Order ord = (Order)dao.save(o);
 		InstallmentService is = new InstallmentService();
 		is.addInstallments(ord);	
+	}
+	
+	public List<Order> fetchAllActiveOrders() {
+		return dao.fetchAllActiveOrders();
+	}
+	
+	public List<Order> fetchOrdersByUser(int userId) {
+		return dao.fetchOrdersByUser(userId);
 	}
 
 }

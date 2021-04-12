@@ -48,7 +48,7 @@ public class Order {
 	private int EMIMonthsPaid;
 	
 	@Column(name = "order_status")
-	private String OrderStatus;
+	private String orderStatus;
 	
 	@Column(name = "monthly_emi_amount")
 	private double monthlyEMIAmount;
@@ -122,11 +122,11 @@ public class Order {
 	}
 
 	public String getOrderStatus() {
-		return OrderStatus;
+		return orderStatus;
 	}
 
 	public void setOrderStatus(String orderStatus) {
-		OrderStatus = orderStatus;
+		this.orderStatus = orderStatus;
 	}
 
 	public double getMonthlyEMIAmount() {
