@@ -44,6 +44,7 @@ public class UserTest {
 		u.setProfileStatus("Inactive");//Default Value
 		u.setEmiCard(emiCard);
 		//Document Id is inserted through a before insert trigger and sequence on the database
+		//hello
 		us.add(u);
 	}
 	
