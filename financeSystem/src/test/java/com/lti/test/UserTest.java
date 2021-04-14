@@ -1,9 +1,15 @@
 package com.lti.test;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.lti.dao.GenericDao;
 import com.lti.entity.CardInfo;
 import com.lti.entity.EMICard;
 import com.lti.entity.User;
@@ -13,8 +19,17 @@ import com.lti.service.UserService;
 
 public class UserTest {
 	
-	Service us=new UserService();
-	Service ecs=new EmiCardService();
+	ApplicationContext ctx=new ClassPathXmlApplicationContext("app-config.xml");
+	
+//	Service us=(Service)ctx.getBean("userService");
+//	Service ecs=(Service)ctx.getBean("emiCardService");
+	
+	@Autowired
+	UserService us;
+	
+	@Autowired
+	@Qualifier("emiCardService")
+	Service ecs;
 	
 	@Test
 	public void addUser() {
@@ -24,12 +39,12 @@ public class UserTest {
 		u.setAddress("Mumbai");
 		u.setDob(LocalDate.of(1987,6,21));
 		u.setPassword("nopass123");
-		u.setMobileNo(9234567123L);
+		u.setMobileNo(919524567123L);
 		EMICard emiCard=(EMICard)ecs.fetchByPk("Titanium");
 		u.setProfileStatus("Inactive");//Default Value
 		u.setEmiCard(emiCard);
 		//Document Id is inserted through a before insert trigger and sequence on the database
-		us.add(u);	
+		us.add(u);
 	}
 	
 	@Test
@@ -44,4 +59,27 @@ public class UserTest {
 		u.setCardInfo(c);
 		us.add(u);
 	}
+	
+	@Test
+	public void fetchActiveAllGoldUsers() {
+		List<User> list = us.fetchAllActiveGoldUsers();
+		// System.out.println(list); //for checking null
+		for(User user : list)
+			System.out.println(user.getUserId() + "," + user.getUserName());
+	}
+
+	@Test
+	public void fetchByUserName() {
+		List<User> list = us.fetchUsersByName("so");
+		for(User u : list)
+			System.out.println(u.getUserId() + "," + u.getUserName()+ "," + u.getEmailId());	
+	}
+	
+	@Test
+	public void fetchValidCards() {
+		List<User> list = us.fetchValidCards();
+		for(User ci : list)
+			System.out.println(ci.getUserId() + "," + ci.getUserName()+ "," + ci.getCardInfo().getCardExpiryDate());
+	}
+	
 }

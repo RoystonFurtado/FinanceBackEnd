@@ -2,20 +2,31 @@ package com.lti.service;
 
 import java.time.LocalDate;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
+import com.lti.dao.GenericDao;
 import com.lti.dao.InstallmentDao;
 import com.lti.entity.Installment;
 import com.lti.entity.Order;
 
-@Component
+@Component("installmentService")
 public class InstallmentService implements Service {
 
+	ApplicationContext ctx=new ClassPathXmlApplicationContext("app-config.xml");
+	//InstallmentDao dao=(InstallmentDao)ctx.getBean("installmentDao");
+	
 	@Autowired
+	@Qualifier("installmentDao")
 	InstallmentDao dao;
 	
 	@Override
+	@Transactional
 	public void add(Object o) {
 		dao.save(o);
 	}
@@ -25,6 +36,7 @@ public class InstallmentService implements Service {
 		return (Installment)dao.fetchById(Installment.class,o);
 	}
 	
+	@Transactional
 	public void addInstallments(Order order) {	
 		Installment i;
 		LocalDate installmentDate;

@@ -5,7 +5,11 @@ import java.util.List;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.lti.dao.GenericDao;
 import com.lti.entity.CardInfo;
 import com.lti.entity.Order;
 import com.lti.entity.Product;
@@ -18,13 +22,29 @@ import com.lti.service.UserService;
 
 public class OrderTest {
 	
-	Service us=new UserService();
-	Service ps=new ProductService();
+	ApplicationContext ctx=new ClassPathXmlApplicationContext("app-config.xml");
+	
+//	Service us=(Service)ctx.getBean("userService");
+//	Service ps=(Service)ctx.getBean("productService");
+	
+	//OrderService os=(OrderService)ctx.getBean("orderService");
+	
+	//Service cis=(Service)ctx.getBean("cardInfoService1");
+	
+	@Autowired
+	@Qualifier("userService")
+	Service us;
+	
+	@Autowired
+	@Qualifier("productService")
+	Service ps;
 	
 	@Autowired
 	OrderService os;
 	
-	Service cis=new CardInfoService();
+	@Autowired
+	@Qualifier("cardInfoService")
+	Service cis;
 	
 	@Test
 	public void addOrder() {

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.lti.entity.Product;
 
-@Component
+@Component("productDao")
 public class ProductDao extends GenericDao{
 	
 	@PersistenceContext

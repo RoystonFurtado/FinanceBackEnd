@@ -11,8 +11,8 @@
           http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<!-- Loading annotated beans -->
-	<context:component-scan base-package="com.lti.dao,com.lti.service" />
-
+	<context:component-scan base-package="com.lti.service,com.lti.dao" />
+	
 	<!-- DataSource configuration -->
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" init-method="createDataSource" destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />

@@ -1,21 +1,17 @@
 package com.lti.dao;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("genericDao")
 public class GenericDao {
 	
 	@PersistenceContext
-	EntityManager em;
+	private EntityManager em;
 	
-	@Transactional
 	public Object save(Object e) {
 		Object obj=em.merge(e);
 		return obj;

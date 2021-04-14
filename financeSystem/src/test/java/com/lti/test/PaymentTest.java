@@ -5,7 +5,12 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.lti.dao.GenericDao;
 import com.lti.entity.CardInfo;
 import com.lti.entity.Installment;
 import com.lti.entity.Order;
@@ -15,12 +20,26 @@ import com.lti.service.CardInfoService;
 import com.lti.service.InstallmentService;
 import com.lti.service.OrderService;
 import com.lti.service.Service;
+import com.lti.service.UserService;
 
 public class PaymentTest {
 	
-	InstallmentService is=new InstallmentService();
-	Service os=new OrderService();
-	Service cis=new CardInfoService();
+	ApplicationContext ctx=new ClassPathXmlApplicationContext("app-config.xml");
+	
+//	InstallmentService is=(InstallmentService)ctx.getBean("installmentService");
+//	Service os=(Service)ctx.getBean("orderService");
+//	Service cis=(Service)ctx.getBean("cardInfoService1");
+	
+	@Autowired
+	InstallmentService is;
+	
+	@Autowired
+	@Qualifier("orderService")
+	Service os;
+	
+	@Autowired
+	@Qualifier("cardInfoService")
+	Service cis;
 	
 	@Test
 	public void addPaymentForInstallment() {

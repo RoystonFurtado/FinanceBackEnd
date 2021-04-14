@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 import com.lti.entity.Order;
 
-@Component
+@Component("orderDao")
 public class OrderDao extends GenericDao {
 	
 	@PersistenceContext

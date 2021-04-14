@@ -3,15 +3,26 @@ package com.lti.test;
 import java.util.List;
 
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.lti.dao.GenericDao;
 import com.lti.entity.Product;
 import com.lti.entity.User;
 import com.lti.service.ProductService;
 import com.lti.service.Service;
+import com.lti.service.UserService;
 
 public class ProductTest {
 	
-	Service ps=new ProductService(); 
+	ApplicationContext ctx=new ClassPathXmlApplicationContext("app-config.xml");
+	//Service ps=(Service)ctx.getBean("productService");
+	
+	@Autowired
+	@Qualifier("productService")
+	Service ps;
 	
 	@Test
 	public void addProduct() {
@@ -19,10 +30,6 @@ public class ProductTest {
 		p.setProductName("Realme 6 pro plus");
 		p.setProductPrice(25000);
 		p.setProductDescription("Oppo is the parent company of RealMe");
-
-		p.setProductName("ASUS ROG Strix");
-		p.setProductPrice(90000);
-		p.setProductDescription("ROG Strix is a gaming Laptop");
 		p.setProductCategory("Laptop");
 		ps.add(p);
 	}	

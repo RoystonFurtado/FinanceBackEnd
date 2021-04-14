@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.lti.entity.Installment;
 
-@Component
+@Component("installmentDao")
 public class InstallmentDao extends GenericDao{
 	
 	@PersistenceContext
